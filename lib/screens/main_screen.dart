@@ -48,7 +48,7 @@ class MainScreen extends ConsumerWidget {
             showSelectedLabels: true,
             showUnselectedLabels: true,
             type: BottomNavigationBarType.fixed,
-            elevation: 0,
+            elevation: 1,
             items: const [
               BottomNavigationBarItem(
                 icon: Icon(Icons.search),

@@ -2,15 +2,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skillwap/models/user_model.dart';
 import 'package:skillwap/utils/dummy_data.dart';
 
-// Provider for the current user
-final currentUserProvider = StateNotifierProvider<UserNotifier, User>((ref) {
-  return UserNotifier(DummyData.currentUser);
-});
+
 
 class UserNotifier extends StateNotifier<User> {
-  UserNotifier(User user) : super(user);
+  UserNotifier(super.user);
 
-  // Increase points when teaching
   void increasePoints() {
     state = User(
       id: state.id,
@@ -24,7 +20,6 @@ class UserNotifier extends StateNotifier<User> {
     );
   }
 
-  // Decrease points when learning
   void decreasePoints() {
     if (state.points > 0) {
       state = User(
@@ -41,12 +36,17 @@ class UserNotifier extends StateNotifier<User> {
   }
 }
 
-// Provider for all users (for search and recommendations)
+// State Notifier Provider for the current user (dynamic)
+final currentUserProvider = StateNotifierProvider<UserNotifier, User>((ref) {
+  return UserNotifier(DummyData.currentUser);
+});
+
+// Provider for all users (for search and recommendations - this is static)
 final allUsersProvider = Provider<List<User>>((ref) {
   return DummyData.users;
 });
 
-// Provider for past interactions
+// Provider for past interactions (this is also static)
 final pastInteractionsProvider = Provider<List<Interaction>>((ref) {
   return DummyData.pastInteractions;
 });

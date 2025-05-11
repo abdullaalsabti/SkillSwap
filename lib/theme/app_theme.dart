@@ -26,7 +26,6 @@ class AppTheme {
 
   static ThemeData get lightTheme {
     return ThemeData(
-      useMaterial3: true,
       colorScheme: const ColorScheme(
         brightness: Brightness.light,
         primary: primaryColor,
@@ -66,7 +65,7 @@ class AppTheme {
       ),
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
-        fillColor: Colors.grey[100],
+        fillColor: Colors.white54,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
           borderSide: BorderSide.none,
